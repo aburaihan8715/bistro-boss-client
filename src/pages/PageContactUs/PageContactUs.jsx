@@ -1,7 +1,13 @@
+import ContactForm from "./ContactForm/ContactForm";
+import ContactUsBanner from "./ContactUsBanner/ContactUsBanner";
+import Location from "./Location/Location";
+
 const PageContactUs = () => {
   return (
     <div>
-      <div>contact us</div>
+      <ContactUsBanner></ContactUsBanner>
+      <Location></Location>
+      <ContactForm></ContactForm>
     </div>
   );
 };

@@ -1,7 +1,11 @@
+import ShopBanner from "./ShopBanner/ShopBanner";
+import ShopByCategory from "./ShopByCategory/ShopByCategory";
+
 const PageShop = () => {
   return (
     <div>
-      <div>shop page</div>
+      <ShopBanner></ShopBanner>
+      <ShopByCategory></ShopByCategory>
     </div>
   );
 };
