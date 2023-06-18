@@ -1,13 +1,15 @@
 import Header from "../components/Header/Header";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Footer from "../components/Footer/Footer";
 
 const MainLayout = () => {
+  const { pathname } = useLocation();
+  const isHeaderFooter = pathname.includes("login") || pathname.includes("signUp");
   return (
     <div>
-      <Header></Header>
+      {isHeaderFooter || <Header></Header>}
       <Outlet></Outlet>
-      <Footer></Footer>
+      {isHeaderFooter || <Footer></Footer>}
     </div>
   );
 };

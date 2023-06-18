@@ -1,19 +1,17 @@
-import itemImg1 from "../../assets/images/home/slide1.jpg";
-
-const FoodItem = () => {
+const FoodItem = ({ data }) => {
   return (
-    <div className="flex gap-4">
-      <div className="">
-        <img className="w-24 h-20 object-cover rounded-full rounded-tl-none" src={itemImg1} alt="food photo" />
+    <div className="flex gap-4 items-start">
+      <div className=" ">
+        <img className="w-[120px] object-cover rounded-full rounded-tl-none" src={data?.image} alt="food photo" />
       </div>
       <div>
-        <div>ROAST DUCK BREAST ------------------</div>
-        <p>Roasted duck breast (served pink) with gratin potato and a griottine cherry sauce</p>
+        <p className="text-xl font-semibold">{data?.name} ------------------</p>
+        <p>{data?.recipe}</p>
       </div>
-      <div>
+      <p className="text-orange-700">
         <span>$</span>
-        <span>14.5</span>
-      </div>
+        <span>{data?.price}</span>
+      </p>
     </div>
   );
 };

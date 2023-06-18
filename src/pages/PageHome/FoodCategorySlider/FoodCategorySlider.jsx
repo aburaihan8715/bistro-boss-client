@@ -22,7 +22,7 @@ const foodCategoryImages = [
   { categoryImg: foodCategory5, name: "cake" },
 ];
 
-const swiperSlides = foodCategoryImages.map((foodCategoryImage, index) => (
+const swiperSlides = foodCategoryImages?.map((foodCategoryImage, index) => (
   <SwiperSlide key={index}>
     <img className="w-full" src={foodCategoryImage.categoryImg} alt="food category photo" />
     <div className="text-center uppercase font-semibold relative -top-16 text-black text-opacity-50">{foodCategoryImage.name}</div>

@@ -2,8 +2,9 @@ import Button from "../../../components/Button/Button";
 import CommonBanner from "../../../components/CommonBanner/CommonBanner";
 import FoodItem from "../../../components/FoodItem/FoodItem";
 import soupImg from "../../../assets/images/menu/soup-bg.jpg";
+import { Link } from "react-router-dom";
 
-const Soups = () => {
+const Soups = ({ soupData }) => {
   return (
     <div>
       <div className="py-8">
@@ -14,15 +15,14 @@ const Soups = () => {
         ></CommonBanner>
       </div>
       <div className="grid sm:grid-cols-2 gap-8">
-        <FoodItem></FoodItem>
-        <FoodItem></FoodItem>
-        <FoodItem></FoodItem>
-        <FoodItem></FoodItem>
-        <FoodItem></FoodItem>
-        <FoodItem></FoodItem>
+        {soupData.map((singleSoupData) => (
+          <FoodItem key={singleSoupData._id} data={singleSoupData}></FoodItem>
+        ))}
       </div>
       <div className="text-center my-6">
-        <Button>ORDER YOUR favorite FOOD</Button>
+        <Link to="/shop/soup">
+          <Button>order now</Button>
+        </Link>
       </div>
     </div>
   );

@@ -1,6 +1,8 @@
 import { Helmet } from "react-helmet-async";
-import loginBg from "../../assets/images/others/authentication.png";
-import loginImg from "../../assets/images/others/authentication2.png";
+import bgImg from "../../assets/images/others/authentication.png";
+import bannerImg from "../../assets/images/others/authentication2.png";
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { Link } from "react-router-dom";
 
 const PageLogin = () => {
   return (
@@ -9,10 +11,10 @@ const PageLogin = () => {
         <title>Bistro | Login</title>
       </Helmet>
 
-      <div className="p-16" style={{ backgroundImage: `url(${loginBg})` }}>
+      <div className="p-16" style={{ backgroundImage: `url(${bgImg})` }}>
         <div className="grid sm:grid-cols-2 shadow-lg items-center py-8 px-16 rounded">
           <div>
-            <img className="" src={loginImg} alt="banner" />
+            <img className="" src={bannerImg} alt="banner" />
           </div>
 
           <div className="">
@@ -47,30 +49,19 @@ const PageLogin = () => {
                 </div>
 
                 <div className="w-full ">
-                  <input type="submit" value="submit" className="btn btn-block bg-orange-300 hover:bg-orange-400" />
+                  <input type="submit" value="Login" className="btn btn-block bg-orange-300 hover:bg-orange-400 text-white" />
                 </div>
               </div>
             </form>
-            <p className="text-center mt-2">New here? Create a New Account</p>
+            <p className="text-center mt-2">
+              New here?
+              <Link className="text-orange-700 hover:underline" to="/signUp">
+                Create a New Account
+              </Link>
+            </p>
             <p className="text-center mb-2">or sign in with</p>
-
-            <div className="flex gap-6 justify-center">
-              <div className="avatar">
-                <div className="w-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src="https://i.ibb.co/Y7nTmxp/facebook.png" />
-                </div>
-              </div>
-              <div className="avatar">
-                <div className="w-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src="https://i.ibb.co/72bXZqD/google.png" />
-                </div>
-              </div>
-              <div className="avatar">
-                <div className="w-5 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
-                  <img src="https://i.ibb.co/JHJ7PMt/github.png" />
-                </div>
-              </div>
-            </div>
+            {/* social login */}
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>

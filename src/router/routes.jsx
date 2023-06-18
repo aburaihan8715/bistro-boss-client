@@ -19,23 +19,24 @@ const router = createBrowserRouter([
         element: <PageHome></PageHome>,
       },
       {
-        path: "/signUp",
+        path: "signUp",
         element: <PageSignUp></PageSignUp>,
       },
       {
-        path: "/login",
+        path: "login",
         element: <PageLogin></PageLogin>,
       },
       {
-        path: "/menu",
+        path: "menu",
         element: <PageMenu></PageMenu>,
       },
       {
-        path: "/shop",
+        path: "shop/:category",
         element: <PageShop></PageShop>,
       },
+
       {
-        path: "/contact",
+        path: "contact",
         element: <PageContactUs></PageContactUs>,
       },
     ],
