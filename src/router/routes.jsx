@@ -7,6 +7,8 @@ import PageNotFound from "../pages/PageNotFound/PageNotFound";
 import PageMenu from "../pages/PageMenu/PageMenu";
 import PageShop from "../pages/PageShop/PageShop";
 import PageContactUs from "../pages/PageContactUs/PageContactUs";
+import Secret from "../pages/Secret";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +40,14 @@ const router = createBrowserRouter([
       {
         path: "contact",
         element: <PageContactUs></PageContactUs>,
+      },
+      {
+        path: "secret",
+        element: (
+          <PrivateRoute>
+            <Secret></Secret>
+          </PrivateRoute>
+        ),
       },
     ],
   },

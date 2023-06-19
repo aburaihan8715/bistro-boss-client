@@ -4,7 +4,7 @@ import CallUs from "./CallUs/CallUs";
 import FeaturedItem from "./FeaturedItem/FeaturedItem";
 import FoodBanner from "./FoodBnner/FoodBanner";
 import FoodCategorySlider from "./FoodCategorySlider/FoodCategorySlider";
-import FoodMenu from "./FoodMenu/FoodMenu";
+import FromMenu from "./FromMenu/FromMenu";
 import RecommendFood from "./RecommendFood/RecommendFood";
 import Slider from "./Slider/Slider";
 
@@ -17,7 +17,7 @@ const PageHome = () => {
       <Slider></Slider>
       <FoodCategorySlider></FoodCategorySlider>
       <FoodBanner></FoodBanner>
-      <FoodMenu></FoodMenu>
+      <FromMenu></FromMenu>
       <CallUs></CallUs>
       <RecommendFood></RecommendFood>
       <FeaturedItem></FeaturedItem>

@@ -1,6 +1,18 @@
 import { Link, NavLink } from "react-router-dom";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
+  const { user, logOutUser } = useAuth();
+
+  const logOutHandler = () => {
+    logOutUser()
+      .then(() => {
+        console.log("user logged out");
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   const menuItems = (
     <>
       <li>
@@ -10,12 +22,29 @@ const Header = () => {
       <li>
         <NavLink to="/menu">Our Menu</NavLink>
       </li>
+
       <li>
         <NavLink to="/shop/salad">Our Shop</NavLink>
       </li>
+
       <li>
         <NavLink to="/contact">Contact Us</NavLink>
       </li>
+
+      <li>
+        <NavLink to="/secret">Secret</NavLink>
+      </li>
+
+      {!user && (
+        <li>
+          <NavLink to="/login">Login</NavLink>
+        </li>
+      )}
+      {user && (
+        <li>
+          <button onClick={logOutHandler}>Logout</button>
+        </li>
+      )}
     </>
   );
   return (
@@ -43,7 +72,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{menuItems}</ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Login</a>
+          <a className="btn">get started</a>
         </div>
       </div>
     </div>

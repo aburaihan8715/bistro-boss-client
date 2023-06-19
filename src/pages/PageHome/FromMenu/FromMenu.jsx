@@ -5,7 +5,7 @@ import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import useFetchMenuData from "../../../hooks/useFetchMenuData";
 import { Link } from "react-router-dom";
 
-const FoodMenu = () => {
+const FromMenu = () => {
   const [menuData, loading] = useFetchMenuData();
 
   const popularMenu = menuData?.filter((item) => item.category === "popular");
@@ -31,4 +31,4 @@ const FoodMenu = () => {
   );
 };
 
-export default FoodMenu;
+export default FromMenu;
