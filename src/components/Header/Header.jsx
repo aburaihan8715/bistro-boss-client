@@ -48,12 +48,14 @@ const Header = () => {
       )}
 
       <li>
-        <button className="btn items-center ">
-          <span className="text-orange-400">
-            <FaShoppingCart />
-          </span>
-          <div className="badge badge-secondary">+{cart?.length || 0}</div>
-        </button>
+        <Link to="/dashboard/myCart">
+          <button className="btn items-center ">
+            <span className="text-orange-400">
+              <FaShoppingCart />
+            </span>
+            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+          </button>
+        </Link>
       </li>
     </>
   );

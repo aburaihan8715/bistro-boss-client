@@ -9,6 +9,7 @@ import PageShop from "../pages/PageShop/PageShop";
 import PageContactUs from "../pages/PageContactUs/PageContactUs";
 import Secret from "../pages/Secret";
 import PrivateRoute from "./PrivateRoute";
+import DashboardLayout from "../layouts/DashboardLayout";
 
 const router = createBrowserRouter([
   {
@@ -49,6 +50,17 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+    ],
+  },
+  {
+    path: "dashboard",
+    element: <DashboardLayout></DashboardLayout>,
+    errorElement: <PageNotFound></PageNotFound>,
+    children: [
+      // {
+      //   path: "myCart",
+      //   element: <MyCart></MyCart>,
+      // },
     ],
   },
 ]);
