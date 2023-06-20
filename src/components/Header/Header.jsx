@@ -1,14 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { FaShoppingCart } from "react-icons/fa";
+import useFetchCartData from "../../hooks/useFetchCartData";
 
 const Header = () => {
   const { user, logOutUser } = useAuth();
+  const [cart] = useFetchCartData();
 
   const logOutHandler = () => {
     logOutUser()
-      .then(() => {
-        console.log("user logged out");
-      })
+      .then(() => {})
       .catch((error) => {
         console.log(error.message);
       });
@@ -45,8 +46,18 @@ const Header = () => {
           <button onClick={logOutHandler}>Logout</button>
         </li>
       )}
+
+      <li>
+        <button className="btn items-center ">
+          <span className="text-orange-400">
+            <FaShoppingCart />
+          </span>
+          <div className="badge badge-secondary">+{cart?.length || 0}</div>
+        </button>
+      </li>
     </>
   );
+
   return (
     <div className="">
       <div className="navbar max-w-[1140px] fixed z-10 bg-opacity-75 bg-gray-700 text-white">

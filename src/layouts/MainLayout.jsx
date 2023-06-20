@@ -8,7 +8,9 @@ const MainLayout = () => {
   return (
     <div>
       {isHeaderFooter || <Header></Header>}
-      <Outlet></Outlet>
+      <div className="min-h-[calc(100vh-271px)]">
+        <Outlet></Outlet>
+      </div>
       {isHeaderFooter || <Footer></Footer>}
     </div>
   );

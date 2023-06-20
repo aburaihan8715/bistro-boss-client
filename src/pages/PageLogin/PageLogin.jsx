@@ -7,6 +7,7 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-s
 import { useEffect } from "react";
 import { useState } from "react";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
 
 const PageLogin = () => {
   const [loginInputData, setLoginInputData] = useState({});
@@ -49,7 +50,12 @@ const PageLogin = () => {
         const user = result.user;
         // reset form
         event.target.reset();
-        alert("login success!");
+        Swal.fire({
+          position: "center",
+          title: "Login success!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
         console.log(user);
         setLoading(false);
         navigate(from, { replace: true });

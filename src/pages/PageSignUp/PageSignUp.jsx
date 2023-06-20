@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom/dist";
+import Swal from "sweetalert2";
 
 const PageSignUp = () => {
   const navigate = useNavigate();
@@ -28,7 +29,12 @@ const PageSignUp = () => {
         updateUserProfile(name, photo).then(() => {
           console.log("user profile updated");
           reset();
-          alert("user creation success!");
+          Swal.fire({
+            position: "center",
+            title: "User creation success!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
           navigate("/");
         });
       })
