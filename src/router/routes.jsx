@@ -10,6 +10,7 @@ import PageContactUs from "../pages/PageContactUs/PageContactUs";
 import Secret from "../pages/Secret";
 import PrivateRoute from "./PrivateRoute";
 import DashboardLayout from "../layouts/DashboardLayout";
+import MyCart from "../pages/dashboard/MyCart/MyCart";
 
 const router = createBrowserRouter([
   {
@@ -57,10 +58,10 @@ const router = createBrowserRouter([
     element: <DashboardLayout></DashboardLayout>,
     errorElement: <PageNotFound></PageNotFound>,
     children: [
-      // {
-      //   path: "myCart",
-      //   element: <MyCart></MyCart>,
-      // },
+      {
+        path: "myCart",
+        element: <MyCart></MyCart>,
+      },
     ],
   },
 ]);
