@@ -52,7 +52,7 @@ const PageMyCart = () => {
           </div>
           <div>
             <span>Total Price: </span>
-            <span>${totalPrice}</span>
+            <span>${totalPrice.toFixed(2)}</span>
           </div>
           <div>
             <button className="btn bg-orange-300">pay</button>

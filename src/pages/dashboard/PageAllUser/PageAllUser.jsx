@@ -41,6 +41,28 @@ const PageAllUser = () => {
     });
   };
 
+  const makeAdminHandler = (user) => {
+    fetch(`http://localhost:5001/users/admin/${user?._id}`, {
+      method: "PATCH",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.modifiedCount) {
+          refetch();
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: `${user.name} is admin now!`,
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
   return (
     <div className="">
       <Helmet>
@@ -74,11 +96,16 @@ const PageAllUser = () => {
                   <th>{index + 1}</th>
                   <td>{user.name}</td>
                   <td>{user.email}</td>
+
                   <td className="">
-                    <button className="btn">
-                      <FaUsers></FaUsers>
-                    </button>
+                    {user?.role === "admin" && "admin"}
+                    {user?.role !== "admin" && (
+                      <button onClick={() => makeAdminHandler(user)} className="btn">
+                        <FaUsers></FaUsers>
+                      </button>
+                    )}
                   </td>
+
                   <th>
                     <button onClick={() => deleteHandler(user)} className="btn bg-red-600 text-white hover:bg-red-800">
                       <FaTrashAlt></FaTrashAlt>
