@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 
 const useFetchCartData = () => {
   const { user } = useAuth();
-  const { data: cart = [], refetch } = useQuery({
+  const { data: carts = [], refetch } = useQuery({
     queryKey: ["carts", user?.email],
     queryFn: async () => {
       const data = await fetch(`http://localhost:5001/carts?email=${user?.email}`);
@@ -11,7 +11,7 @@ const useFetchCartData = () => {
     },
   });
 
-  return [cart, refetch];
+  return [carts, refetch];
 };
 
 export default useFetchCartData;

@@ -13,8 +13,8 @@ const FoodCard = ({ data }) => {
 
   const addToCartHandler = (data) => {
     const { image, name, price, _id } = data;
-    const addItem = { addId: _id, image, name, price, email: user.email };
     if (user && user.email) {
+      const addItem = { addId: _id, image, name, price, email: user.email };
       fetch("http://localhost:5001/carts", {
         method: "POST",
         headers: {

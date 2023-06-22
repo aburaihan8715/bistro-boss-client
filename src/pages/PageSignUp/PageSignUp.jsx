@@ -27,15 +27,30 @@ const PageSignUp = () => {
         console.log(user);
         // function call for update user profile
         updateUserProfile(name, photo).then(() => {
-          console.log("user profile updated");
-          reset();
-          Swal.fire({
-            position: "center",
-            title: "User creation success!",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          navigate("/");
+          const userData = { name, email };
+          fetch("http://localhost:5001/users", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          })
+            .then((res) => res.json())
+            .then((data) => {
+              if (data.insertedId) {
+                reset();
+                Swal.fire({
+                  position: "center",
+                  title: "User creation success!",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                navigate("/");
+              }
+            })
+            .catch((error) => {
+              console.log(error.message);
+            });
         });
       })
       .catch((error) => {

@@ -5,7 +5,7 @@ import useFetchCartData from "../../hooks/useFetchCartData";
 
 const Header = () => {
   const { user, logOutUser } = useAuth();
-  const [cart] = useFetchCartData();
+  const [carts] = useFetchCartData();
 
   const logOutHandler = () => {
     logOutUser()
@@ -53,7 +53,7 @@ const Header = () => {
             <span className="text-orange-400">
               <FaShoppingCart />
             </span>
-            <div className="badge badge-secondary">+{cart?.length || 0}</div>
+            <div className="badge badge-secondary">+{carts?.length || 0}</div>
           </button>
         </Link>
       </li>
