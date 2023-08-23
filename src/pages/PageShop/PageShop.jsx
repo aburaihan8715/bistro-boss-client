@@ -2,12 +2,18 @@
 // import ShopBanner from "./ShopBanner/ShopBanner";
 // import ShopByCategory from "./ShopByCategory/ShopByCategory";
 
+import ShopBanner from "./ShopBanner";
+import ShopByCategory from "./ShopByCategory";
+
 const PageShop = () => {
   return (
     <div>
-      <h2>shop page</h2>
-      {/* <ShopBanner></ShopBanner>
-      <ShopByCategory></ShopByCategory>
+      <ShopBanner></ShopBanner>
+      <div className="max-w-5xl mx-auto">
+        <ShopByCategory></ShopByCategory>
+      </div>
+      {/*
+     
       <Pagination></Pagination> */}
     </div>
   );

@@ -1,28 +1,32 @@
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import FoodCard from "../../../components/FoodCard/FoodCard";
 import { useState } from "react";
-import useFetchMenuData from "../../hooks/useFetchMenuData";
-import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 import { useParams } from "react-router-dom";
+import useFetchMenuData from "../../hooks/useFetchMenuData";
+import LoadingSpinner from "../../components/LoadingSpinner";
+import ErrorMessage from "../../components/ErrorMessage";
+import FoodCard from "../../components/FoodCard";
+// import FoodCard from "../../../components/FoodCard/FoodCard";
+// import useFetchMenuData from "../../hooks/useFetchMenuData";
+// import LoadingSpinner from "../../../components/LoadingSpinner/LoadingSpinner";
 
+const categories = ["salad", "pizza", "soup", "dessert", "drinks", "offered"];
 const ShopByCategory = () => {
-  const categories = ["salad", "pizza", "soup", "dessert", "drinks", "offered"];
   const { category } = useParams();
   const initialIndex = categories.indexOf(category);
   const [tabIndex, setTabIndex] = useState(initialIndex);
-  const [menuData, loading] = useFetchMenuData();
+  const { menuData, menuLoading, menuError } = useFetchMenuData();
 
-  const dessertData = menuData?.filter((item) => item.category === "dessert");
-  const pizzaData = menuData?.filter((item) => item.category === "pizza");
-  const saladData = menuData?.filter((item) => item.category === "salad");
-  const soupData = menuData?.filter((item) => item.category === "soup");
-  const drinksData = menuData?.filter((item) => item.category === "drinks");
-  const offeredData = menuData?.filter((item) => item.category === "offered");
+  const dessertData = menuData?.filter((item) => item.category.toLowerCase() === "dessert");
+  const pizzaData = menuData?.filter((item) => item.category.toLowerCase() === "pizza");
+  const saladData = menuData?.filter((item) => item.category.toLowerCase() === "salad");
+  const soupData = menuData?.filter((item) => item.category.toLowerCase() === "soup");
+  const drinksData = menuData?.filter((item) => item.category.toLowerCase() === "drinks");
+  const offeredData = menuData?.filter((item) => item.category.toLowerCase() === "offered");
 
-  if (loading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
+  if (menuLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (menuError) return <ErrorMessage>{menuError}</ErrorMessage>;
+
   return (
     <div className="py-8">
       <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

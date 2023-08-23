@@ -51,7 +51,7 @@ const router = createBrowserRouter([
         element: <PageMenu></PageMenu>,
       },
       {
-        path: "/shop",
+        path: "/shop/:category",
         element: <PageShop></PageShop>,
       },
       {
