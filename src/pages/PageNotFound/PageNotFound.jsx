@@ -6,7 +6,8 @@ const PageNotFound = () => {
       <Helmet>
         <title>Bistro | NotFound</title>
       </Helmet>
-      <div>not found</div>
+      <h3>404 Not found</h3>
+      <p>Something went wrong!!</p>
     </div>
   );
 };

@@ -3,17 +3,17 @@ import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
 import useAuth from "../hooks/useAuth";
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useAuth();
+  const { user, authLoading } = useAuth();
   const location = useLocation();
 
-  if (loading) {
+  if (authLoading) {
     return <LoadingSpinner></LoadingSpinner>;
   }
 
   if (user) {
     return children;
   }
-
+  // NOTE: first curly bracket of state means javascript mode on then send object
   return <Navigate to="/login" state={{ from: location }} replace />;
 };
 

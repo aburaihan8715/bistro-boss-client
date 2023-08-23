@@ -12,7 +12,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 const queryClient = new QueryClient();
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <div className="max-w-[1140px] mx-auto">
+  <div className="">
     <React.StrictMode>
       <AuthProvider>
         <HelmetProvider>

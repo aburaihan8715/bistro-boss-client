@@ -1,70 +1,71 @@
 import { Helmet } from "react-helmet-async";
-import bgImg from "../../assets/images/others/authentication.png";
-import bannerImg from "../../assets/images/others/authentication2.png";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import { Link } from "react-router-dom";
-import { useForm } from "react-hook-form";
-import useAuth from "../../hooks/useAuth";
-import { useNavigate } from "react-router-dom/dist";
-import Swal from "sweetalert2";
+// import bgImg from "../../assets/images/others/authentication.png";
+// import bannerImg from "../../assets/images/others/authentication2.png";
+// import SocialLogin from "../../components/SocialLogin/SocialLogin";
+// import { Link } from "react-router-dom";
+// import { useForm } from "react-hook-form";
+// import useAuth from "../../hooks/useAuth";
+// import { useNavigate } from "react-router-dom/dist";
+// import Swal from "sweetalert2";
 
 const PageSignUp = () => {
-  const navigate = useNavigate();
-  const { createUserUsingEmailPassword, updateUserProfile } = useAuth();
-  const {
-    register,
-    reset,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
+  // const navigate = useNavigate();
+  // const { createUserUsingEmailPassword, updateUserProfile } = useAuth();
+  // const {
+  //   register,
+  //   reset,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm();
 
-  const signUpHandler = (data) => {
-    // console.log(data);
-    const { email, password, name, photo } = data;
-    createUserUsingEmailPassword(email, password)
-      .then((result) => {
-        const user = result.user;
-        console.log(user);
-        // function call for update user profile
-        updateUserProfile(name, photo).then(() => {
-          const userData = { name, email };
-          fetch("http://localhost:5001/users", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify(userData),
-          })
-            .then((res) => res.json())
-            .then((data) => {
-              if (data.insertedId) {
-                reset();
-                Swal.fire({
-                  position: "center",
-                  title: "User creation success!",
-                  showConfirmButton: false,
-                  timer: 1500,
-                });
-                navigate("/");
-              }
-            })
-            .catch((error) => {
-              console.log(error.message);
-            });
-        });
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
+  // const signUpHandler = (data) => {
+  //   // console.log(data);
+  //   const { email, password, name, photo } = data;
+  //   createUserUsingEmailPassword(email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       console.log(user);
+  //       // function call for update user profile
+  //       updateUserProfile(name, photo).then(() => {
+  //         const userData = { name, email };
+  //         fetch("http://localhost:5000/users", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-type": "application/json",
+  //           },
+  //           body: JSON.stringify(userData),
+  //         })
+  //           .then((res) => res.json())
+  //           .then((data) => {
+  //             if (data.insertedId) {
+  //               reset();
+  //               Swal.fire({
+  //                 position: "center",
+  //                 title: "User creation success!",
+  //                 showConfirmButton: false,
+  //                 timer: 1500,
+  //               });
+  //               navigate("/");
+  //             }
+  //           })
+  //           .catch((error) => {
+  //             console.log(error.message);
+  //           });
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // };
 
   return (
     <div>
       <Helmet>
         <title>Bistro | SignUp</title>
       </Helmet>
+      <h2>sign up page</h2>
 
-      <div className="p-16" style={{ backgroundImage: `url(${bgImg})` }}>
+      {/* <div className="p-16" style={{ backgroundImage: `url(${bgImg})` }}>
         <div className="grid sm:grid-cols-2 shadow-lg items-center py-8 px-16 rounded">
           <div className="order-1">
             <img className="" src={bannerImg} alt="banner" />
@@ -77,7 +78,7 @@ const PageSignUp = () => {
                   <h4 className="text-4xl capitalize">Sign up</h4>
                 </div>
 
-                {/* name input */}
+               
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Name</span>
@@ -91,7 +92,7 @@ const PageSignUp = () => {
                   {errors.name?.type === "required" && <span className="text-error">Name is required</span>}
                 </div>
 
-                {/* photo url input */}
+          
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Photo</span>
@@ -105,7 +106,7 @@ const PageSignUp = () => {
                   {errors.name?.type === "required" && <span className="text-error">Photo url is required</span>}
                 </div>
 
-                {/* email input */}
+               
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -119,7 +120,7 @@ const PageSignUp = () => {
                   {errors.email?.type === "required" && <span className="text-error">Email is required</span>}
                 </div>
 
-                {/* password input */}
+                
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Password</span>
@@ -146,7 +147,7 @@ const PageSignUp = () => {
                   )}
                 </div>
 
-                {/* sign up button*/}
+                
                 <div className="w-full ">
                   <input type="submit" value="Sign Up" className="btn btn-block bg-orange-300 hover:bg-orange-400 text-white" />
                 </div>
@@ -162,11 +163,11 @@ const PageSignUp = () => {
 
             <p className="text-center mb-2">or sign in with</p>
 
-            {/* social login */}
+            
             <SocialLogin></SocialLogin>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -1,12 +1,11 @@
 import { Helmet } from "react-helmet-async";
-import Testimonials from "./Testimonials/Testimonials";
-import CallUs from "./CallUs/CallUs";
-import FeaturedItem from "./FeaturedItem/FeaturedItem";
-import FoodBanner from "./FoodBnner/FoodBanner";
-import FoodCategorySlider from "./FoodCategorySlider/FoodCategorySlider";
-import FromMenu from "./FromMenu/FromMenu";
-import RecommendFood from "./RecommendFood/RecommendFood";
-import Slider from "./Slider/Slider";
+import Banner from "./Banner";
+import FoodCategorySlider from "./FoodCategorySlider";
+import FromMenu from "./FromMenu";
+import CallUs from "./CallUs";
+import RecommendFood from "./RecommendFood";
+import FeaturedItem from "./FeaturedItem";
+import Testimonials from "./Testimonials";
 
 const PageHome = () => {
   return (
@@ -14,9 +13,8 @@ const PageHome = () => {
       <Helmet>
         <title>Bistro | Home</title>
       </Helmet>
-      <Slider></Slider>
+      <Banner></Banner>
       <FoodCategorySlider></FoodCategorySlider>
-      <FoodBanner></FoodBanner>
       <FromMenu></FromMenu>
       <CallUs></CallUs>
       <RecommendFood></RecommendFood>

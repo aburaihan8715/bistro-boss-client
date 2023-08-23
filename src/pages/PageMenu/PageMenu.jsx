@@ -1,14 +1,14 @@
-import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
+import ErrorMessage from "../../components/ErrorMessage";
+import LoadingSpinner from "../../components/LoadingSpinner";
 import useFetchMenuData from "../../hooks/useFetchMenuData";
-import Desserts from "./Desserts/Desserts";
-import MenuBanner from "./MenuBanner/MenuBanner";
-import Pizza from "./Pizza/Pizza";
-import Salads from "./Salads/Salads";
-import Soups from "./Soups/Soups";
-import TodaysOffer from "./TodaysOffer/TodaysOffer";
+import Desserts from "./Desserts";
+import Pizza from "./Pizza";
+import Salads from "./Salads";
+import Soups from "./Soups";
+import TodaysOffer from "./TodaysOffer";
 
 const PageMenu = () => {
-  const [menuData, loading] = useFetchMenuData();
+  const { menuData, menuLoading, menuError } = useFetchMenuData();
 
   const offeredData = menuData?.filter((item) => item.category === "offered");
   const dessertData = menuData?.filter((item) => item.category === "dessert");
@@ -16,13 +16,11 @@ const PageMenu = () => {
   const saladData = menuData?.filter((item) => item.category === "salad");
   const soupData = menuData?.filter((item) => item.category === "soup");
 
-  if (loading) {
-    return <LoadingSpinner></LoadingSpinner>;
-  }
+  if (menuLoading) return <LoadingSpinner></LoadingSpinner>;
+  if (menuError) return <ErrorMessage>{menuError}</ErrorMessage>;
   return (
     <div>
-      <MenuBanner></MenuBanner>
-      <TodaysOffer offeredData={offeredData}></TodaysOffer>
+      <TodaysOffer offeredData={offeredData} />
       <Desserts dessertData={dessertData}></Desserts>
       <Pizza pizzaData={pizzaData}></Pizza>
       <Salads saladData={saladData}></Salads>

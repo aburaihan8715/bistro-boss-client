@@ -1,77 +1,77 @@
 import { Helmet } from "react-helmet-async";
-import bgImg from "../../assets/images/others/authentication.png";
-import bannerImg from "../../assets/images/others/authentication2.png";
-import SocialLogin from "../../components/SocialLogin/SocialLogin";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
-import { useEffect } from "react";
-import { useState } from "react";
-import useAuth from "../../hooks/useAuth";
-import Swal from "sweetalert2";
+// import bgImg from "../../assets/images/others/authentication.png";
+// import bannerImg from "../../assets/images/others/authentication2.png";
+// import SocialLogin from "../../components/SocialLogin/SocialLogin";
+// import { Link, useLocation, useNavigate } from "react-router-dom";
+// import { loadCaptchaEnginge, LoadCanvasTemplate, validateCaptcha } from "react-simple-captcha";
+// import { useEffect } from "react";
+// import { useState } from "react";
+// import useAuth from "../../hooks/useAuth";
+// import Swal from "sweetalert2";
 
 const PageLogin = () => {
-  const [loginInputData, setLoginInputData] = useState({});
-  const [disableLoginBtn, setDisableLoginBtn] = useState(true);
-  const { authenticationUsingEmailPassword, setLoading } = useAuth();
-  const location = useLocation();
-  const navigate = useNavigate();
+  // const [loginInputData, setLoginInputData] = useState({});
+  // const [disableLoginBtn, setDisableLoginBtn] = useState(true);
+  // const { authenticationUsingEmailPassword } = useAuth();
+  // const location = useLocation();
+  // const navigate = useNavigate();
 
-  const from = location.state?.from?.pathname || "/";
+  // const from = location.state?.from?.pathname || "/";
 
-  useEffect(() => {
-    loadCaptchaEnginge(6);
-  }, []);
+  // useEffect(() => {
+  //   loadCaptchaEnginge(6);
+  // }, []);
 
   // blur handler
-  const blurHandler = (event) => {
-    const value = event.target.value;
-    const field = event.target.name;
-    const newLoginInputData = { ...loginInputData };
-    newLoginInputData[field] = value;
-    setLoginInputData(newLoginInputData);
-  };
+  // const blurHandler = (event) => {
+  //   const value = event.target.value;
+  //   const field = event.target.name;
+  //   const newLoginInputData = { ...loginInputData };
+  //   newLoginInputData[field] = value;
+  //   setLoginInputData(newLoginInputData);
+  // };
 
   // captcha validation handler
-  const captchaHandler = (event) => {
-    const user_captcha_value = event.target.value;
-    if (validateCaptcha(user_captcha_value)) {
-      setDisableLoginBtn(false);
-    } else {
-      setDisableLoginBtn(true);
-    }
-  };
+  // const captchaHandler = (event) => {
+  //   const user_captcha_value = event.target.value;
+  //   if (validateCaptcha(user_captcha_value)) {
+  //     setDisableLoginBtn(false);
+  //   } else {
+  //     setDisableLoginBtn(true);
+  //   }
+  // };
 
   // login handler
-  const loginHandler = (event) => {
-    event.preventDefault();
-    const { email, password } = loginInputData;
-    authenticationUsingEmailPassword(email, password)
-      .then((result) => {
-        const user = result.user;
-        // reset form
-        event.target.reset();
-        Swal.fire({
-          position: "center",
-          title: "Login success!",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        console.log(user);
-        setLoading(false);
-        navigate(from, { replace: true });
-      })
-      .catch((error) => {
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
-  };
+  // const loginHandler = (event) => {
+  //   event.preventDefault();
+  //   const { email, password } = loginInputData;
+  //   authenticationUsingEmailPassword(email, password)
+  //     .then((result) => {
+  //       const user = result.user;
+  //       // reset form
+  //       event.target.reset();
+  //       Swal.fire({
+  //         position: "center",
+  //         title: "Login success!",
+  //         showConfirmButton: false,
+  //         timer: 1500,
+  //       });
+  //       console.log(user);
+  //       navigate(from, { replace: true });
+  //     })
+  //     .catch((error) => {
+  //       const errorMessage = error.message;
+  //       console.log(errorMessage);
+  //     });
+  // };
 
   return (
     <div>
       <Helmet>
         <title>Bistro | Login</title>
       </Helmet>
-
+      <h2>login page</h2>
+      {/* 
       <div className="p-16" style={{ backgroundImage: `url(${bgImg})` }}>
         <div className="grid sm:grid-cols-2 shadow-lg items-center py-8 px-16 rounded">
           <div>
@@ -85,7 +85,7 @@ const PageLogin = () => {
                   <h4 className="text-4xl capitalize">login</h4>
                 </div>
 
-                {/* email input */}
+               
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Email</span>
@@ -100,7 +100,7 @@ const PageLogin = () => {
                   />
                 </div>
 
-                {/* password input */}
+         
                 <div className="w-full ">
                   <label className="label">
                     <span className="label-text">Password</span>
@@ -115,7 +115,7 @@ const PageLogin = () => {
                   />
                 </div>
 
-                {/* captcha input */}
+          
                 <div className="w-full ">
                   <LoadCanvasTemplate />
                   <input
@@ -129,7 +129,7 @@ const PageLogin = () => {
                   <span className="btn btn-accent btn-xs mt-2">Check</span>
                 </div>
 
-                {/* submit button */}
+           
                 <div className="w-full ">
                   <input
                     disabled={disableLoginBtn}
@@ -150,11 +150,11 @@ const PageLogin = () => {
 
             <p className="text-center mb-2">or sign in with</p>
 
-            {/* social login */}
+           
             <SocialLogin></SocialLogin>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

@@ -2,21 +2,24 @@ import { useEffect, useState } from "react";
 
 const useFetchMenuData = () => {
   const [menuData, setMenuData] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [menuLoading, setMenuLoading] = useState(false);
+  const [menuError, setMenuError] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:5001/menu")
+    setMenuLoading(true);
+    fetch("http://localhost:5000/menu")
       .then((res) => res.json())
       .then((data) => {
+        setMenuLoading(false);
         setMenuData(data);
-        setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message);
+        setMenuLoading(false);
+        setMenuError(err.message);
       });
-  }, []);
+  }, [menuError]);
 
-  return [menuData, loading];
+  return { menuData, menuLoading, menuError };
 };
 
 export default useFetchMenuData;

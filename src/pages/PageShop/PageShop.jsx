@@ -1,13 +1,14 @@
-import Pagination from "../../components/Pagination/Pagination";
-import ShopBanner from "./ShopBanner/ShopBanner";
-import ShopByCategory from "./ShopByCategory/ShopByCategory";
+// import Pagination from "../../components/Pagination/Pagination";
+// import ShopBanner from "./ShopBanner/ShopBanner";
+// import ShopByCategory from "./ShopByCategory/ShopByCategory";
 
 const PageShop = () => {
   return (
     <div>
-      <ShopBanner></ShopBanner>
+      <h2>shop page</h2>
+      {/* <ShopBanner></ShopBanner>
       <ShopByCategory></ShopByCategory>
-      <Pagination></Pagination>
+      <Pagination></Pagination> */}
     </div>
   );
 };
