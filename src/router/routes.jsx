@@ -1,32 +1,24 @@
 import { createBrowserRouter } from "react-router-dom";
 import MainLayout from "../layouts/MainLayout";
-import PageHome from "../pages/PageHome/PageHome";
-import PageNotFound from "../pages/PageNotFound/PageNotFound";
-import PageContactUs from "../pages/PageContactUs/PageContactUs";
-import PageMenu from "../pages/PageMenu/PageMenu";
-import PageShop from "../pages/PageShop/PageShop";
-import PageLogin from "../pages/PageLogin/PageLogin";
-import PageSignUp from "../pages/PageSignUp/PageSignUp";
+import PageNotFound from "../pages/PageNotFound";
+import PageHome from "../pages/PageHome";
+import PageContactUs from "../pages/PageContactUs";
+import PageMenu from "../pages/PageMenu";
+import PageShop from "../pages/PageShop";
+import PageLogin from "../pages/PageLogin";
+import PageSignUp from "../pages/PageSignUp";
 import DashboardLayout from "../layouts/DashboardLayout";
-// import PageLogin from "../pages/PageLogin/PageLogin";
-// import PageSignUp from "../pages/PageSignUp/PageSignUp";
-// import PageMenu from "../pages/PageMenu/PageMenu";
-// import PageShop from "../pages/PageShop/PageShop";
-// import PageContactUs from "../pages/PageContactUs/PageContactUs";
-// import Secret from "../pages/Secret";
-// import PrivateRoute from "./PrivateRoute";
-// import DashboardLayout from "../layouts/DashboardLayout";
-// import PageMyCart from "../pages/dashboard/PageMyCart/PageMyCart";
-// import PageAllUser from "../pages/dashboard/PageAllUser/PageAllUser";
-// import PageAddItems from "../pages/dashboard/PageAddItems/PageAddItems";
-// import PageAddReview from "../pages/dashboard/PageAddReview/PageAddReview";
-// import PageAdminHome from "../pages/dashboard/PageAdminHome/PageAdminHome";
-// import PageManageBookings from "../pages/dashboard/PageManageBookings/PageManageBookings";
-// import PageManageItems from "../pages/dashboard/PageManageItems/PageManageItems";
-// import PageMyBookings from "../pages/dashboard/PageMyBookings/PageMyBookings";
-// import PagePaymentHistory from "../pages/dashboard/PagePaymentHistory/PagePaymentHistory";
-// import PageReservation from "../pages/dashboard/PageReservation/PageReservation";
-// import PageUserHome from "../pages/dashboard/PageUserHome/PageUserHome";
+import PageMyCart from "../pages/PageMyCart";
+import PageUserHome from "../pages/PageUserHome";
+import PageMyBookings from "../pages/PageMyBookings";
+import PageAddReview from "../pages/PageAddReview";
+import PageAdminHome from "../pages/PageAdminHome";
+import PageManageBookings from "../pages/PageManageBookings";
+import PageAllUser from "../pages/PageAllUser";
+import PageManageItems from "../pages/PageManageItems";
+import PageAddItems from "../pages/PageAddItems";
+import PagePaymentHistory from "../pages/PagePaymentHistory";
+import PageReservation from "../pages/PageReservation";
 
 const router = createBrowserRouter([
   // main layout routes
@@ -42,10 +34,7 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <PageContactUs></PageContactUs>,
       },
-      {
-        path: "/dashboard",
-        element: <h2>coming soon</h2>,
-      },
+
       {
         path: "/menu",
         element: <PageMenu></PageMenu>,
@@ -66,77 +55,61 @@ const router = createBrowserRouter([
   },
 
   // dashboard layout routes
-
   {
     element: <DashboardLayout></DashboardLayout>,
     errorElement: <PageNotFound></PageNotFound>,
     children: [
+      // user routes
       {
-        path: "dashboard/my-cart",
-        element: <h2>my cart is coming</h2>,
+        path: "dashboard/userHome",
+        element: <PageUserHome></PageUserHome>,
+      },
+      {
+        path: "dashboard/myCart",
+        element: <PageMyCart></PageMyCart>,
+      },
+
+      {
+        path: "dashboard/myBookings",
+        element: <PageMyBookings></PageMyBookings>,
+      },
+
+      {
+        path: "dashboard/addReview",
+        element: <PageAddReview></PageAddReview>,
+      },
+
+      // admin routes
+      {
+        path: "dashboard/adminHome",
+        element: <PageAdminHome></PageAdminHome>,
+      },
+      {
+        path: "dashboard/manageBookings",
+        element: <PageManageBookings></PageManageBookings>,
+      },
+      {
+        path: "dashboard/allUser",
+        element: <PageAllUser></PageAllUser>,
+      },
+      {
+        path: "dashboard/manageItems",
+        element: <PageManageItems></PageManageItems>,
+      },
+      {
+        path: "dashboard/addItems",
+        element: <PageAddItems></PageAddItems>,
+      },
+      {
+        path: "dashboard/paymentHistory",
+        element: <PagePaymentHistory></PagePaymentHistory>,
+      },
+      {
+        path: "dashboard/reservation",
+        element: <PageReservation></PageReservation>,
       },
     ],
   },
-  // {
-  //   path: "dashboard",
-  //   element: (
-  //     <PrivateRoute>
-  //       <DashboardLayout></DashboardLayout>
-  //     </PrivateRoute>
-  //   ),
-  //   errorElement: <PageNotFound></PageNotFound>,
-  //   children: [
-  //     // user routes
-  //     {
-  //       path: "userHome",
-  //       element: <PageUserHome></PageUserHome>,
-  //     },
-  //     {
-  //       path: "myCart",
-  //       element: <PageMyCart></PageMyCart>,
-  //     },
-
-  //     {
-  //       path: "myBookings",
-  //       element: <PageMyBookings></PageMyBookings>,
-  //     },
-
-  //     {
-  //       path: "addReview",
-  //       element: <PageAddReview></PageAddReview>,
-  //     },
-
-  //     // admin routes
-  //     {
-  //       path: "adminHome",
-  //       element: <PageAdminHome></PageAdminHome>,
-  //     },
-  //     {
-  //       path: "manageBookings",
-  //       element: <PageManageBookings></PageManageBookings>,
-  //     },
-  //     {
-  //       path: "allUser",
-  //       element: <PageAllUser></PageAllUser>,
-  //     },
-  //     {
-  //       path: "manageItems",
-  //       element: <PageManageItems></PageManageItems>,
-  //     },
-  //     {
-  //       path: "addItems",
-  //       element: <PageAddItems></PageAddItems>,
-  //     },
-  //     {
-  //       path: "paymentHistory",
-  //       element: <PagePaymentHistory></PagePaymentHistory>,
-  //     },
-  //     {
-  //       path: "reservation",
-  //       element: <PageReservation></PageReservation>,
-  //     },
-  //   ],
-  // },
 ]);
 
 export default router;

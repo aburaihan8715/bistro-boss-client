@@ -1,5 +1,3 @@
-// import useFetchCartData from "../hooks/useFetchCartData";
-
 import {
   FaBars,
   FaBook,
@@ -15,9 +13,10 @@ import {
   FaWallet,
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
+import useFetchCartData from "../hooks/useFetchCartData";
 
 const DashboardLayout = () => {
-  // const [carts] = useFetchCartData();
+  const { carts } = useFetchCartData();
   // TODO: show nav options based on role
   const isAdmin = true;
   return (
@@ -94,7 +93,7 @@ const DashboardLayout = () => {
                 <NavLink className="flex" to="/dashboard/myCart">
                   <FaShoppingCart />
                   <span>My cart</span>
-                  <div className="badge badge-accent">{[]?.length || 0}</div>
+                  <div className="badge badge-accent">{carts?.length || 0}</div>
                 </NavLink>
               </li>
 
