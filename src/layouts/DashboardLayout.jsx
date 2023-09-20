@@ -14,11 +14,11 @@ import {
 } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useFetchCartData from "../hooks/useFetchCartData";
+import useAdmin from "../hooks/useAdmin";
 
 const DashboardLayout = () => {
   const { carts } = useFetchCartData();
-  // TODO: show nav options based on role
-  const isAdmin = true;
+  const { isAdmin } = useAdmin();
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />

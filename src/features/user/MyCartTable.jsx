@@ -13,7 +13,7 @@ const MyCartTable = () => {
   }, 0);
 
   if (cartLoading) return <LoadingSpinner />;
-  if (cartError) return <ErrorMessage />;
+  if (cartError) return <ErrorMessage>{cartError}</ErrorMessage>;
   return (
     <div className="">
       <div>

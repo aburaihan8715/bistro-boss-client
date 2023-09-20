@@ -2,11 +2,14 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaShoppingCart } from "react-icons/fa";
 import useFetchCartData from "../hooks/useFetchCartData";
+import useAdmin from "../hooks/useAdmin";
 
 const Header = () => {
-  const { user, logOutUser, authLoading } = useAuth();
+  const { user, logOutUser } = useAuth();
   const { carts } = useFetchCartData();
   const navigate = useNavigate();
+
+  const { isAdmin } = useAdmin();
 
   const logOutHandler = async () => {
     try {
@@ -30,11 +33,14 @@ const Header = () => {
       <li>
         <NavLink to="/shop/salad">Shop</NavLink>
       </li>
-      <li>
-        <NavLink to="/dashboard/adminHome">admin</NavLink>
-      </li>
 
-      {user && (
+      {isAdmin && (
+        <li>
+          <NavLink to="/dashboard/adminHome">Admin</NavLink>
+        </li>
+      )}
+
+      {user && !isAdmin && (
         <li>
           <Link to="/dashboard/myCart">
             <span className="text-orange-400">
@@ -80,13 +86,13 @@ const Header = () => {
             </Link>
           )}
           {user && (
-            <button disabled={authLoading} className="btn" onClick={logOutHandler}>
+            <button className="btn" onClick={logOutHandler}>
               Logout
             </button>
           )}
 
           {user && (
-            <div className="avatar">
+            <div title={user?.displayName} className="avatar">
               <div className="w-10 rounded-full ring ring-orange-700 ring-offset-white ring-offset-2">
                 <img src={user?.photoURL} />
               </div>

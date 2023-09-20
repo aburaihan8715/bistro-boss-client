@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 
 const axiosSecure = axios.create({
@@ -9,7 +8,7 @@ const axiosSecure = axios.create({
 
 const useAxiosSecure = () => {
   const { logOutUser } = useAuth();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     // note: actually config is request object
@@ -26,12 +25,12 @@ const useAxiosSecure = () => {
       async (error) => {
         if (error.response && (error.response.status === 401 || error.response.status === 403)) {
           await logOutUser();
-          navigate("/");
+          // navigate("/");
         }
         return Promise.reject(error);
       }
     );
-  }, [logOutUser, navigate]);
+  }, [logOutUser]);
 
   return { axiosSecure };
 };

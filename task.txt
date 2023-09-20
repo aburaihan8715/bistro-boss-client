@@ -1,0 +1,13 @@
+// completed
+1. jwt
+
+
+
+
+
+// pending
+1. admin only route
+2. loading spinner for all required button
+3. payment integration
+4. MVC pattern
+5. image insert for all card

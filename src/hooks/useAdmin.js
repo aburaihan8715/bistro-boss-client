@@ -7,7 +7,11 @@ const useAdmin = () => {
   const { user, authLoading } = useAuth();
   const { axiosSecure } = useAxiosSecure();
   // use axios secure with react query
-  const { data: isAdmin, isLoading: isAdminLoading } = useQuery({
+  const {
+    data: isAdmin,
+    error: adminError,
+    isLoading: isAdminLoading,
+  } = useQuery({
     queryKey: ["isAdmin", user?.email],
     enabled: !authLoading,
     queryFn: async () => {
@@ -15,6 +19,6 @@ const useAdmin = () => {
       return res.data.admin;
     },
   });
-  return { isAdmin, isAdminLoading };
+  return { isAdmin, isAdminLoading, adminError };
 };
 export default useAdmin;

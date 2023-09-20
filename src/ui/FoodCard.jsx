@@ -3,12 +3,14 @@ import Button from "./Button";
 import useAuth from "../hooks/useAuth";
 import { useLocation, useNavigate } from "react-router-dom";
 import useFetchCartData from "../hooks/useFetchCartData";
+import useAdmin from "../hooks/useAdmin";
 
 const FoodCard = ({ data }) => {
   const { user } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
   const { refetch } = useFetchCartData();
+  const { isAdmin } = useAdmin();
 
   const addToCartHandler = (item) => {
     const { image, name, price, _id } = item;
@@ -27,7 +29,6 @@ const FoodCard = ({ data }) => {
             refetch();
             Swal.fire({
               position: "center",
-              icon: "success",
               title: "Added successfully!",
               showConfirmButton: false,
               timer: 1500,
@@ -55,7 +56,7 @@ const FoodCard = ({ data }) => {
   return (
     <div className="border flex flex-col justify-between space-y-4 bg-orange-50 pb-8 rounded overflow-hidden relative">
       <div>
-        <img className="w-full h-60 object-cover" src={data?.image} alt="food photo" />
+        <img className="w-full h-40 object-cover" src={data?.image} alt="food photo" />
       </div>
       <div className="px-8 space-y-2">
         <h4 className="text-2xl capitalize font-semibold">{data?.name}</h4>
@@ -63,7 +64,7 @@ const FoodCard = ({ data }) => {
       </div>
 
       <div className="text-center">
-        <Button onClick={() => addToCartHandler(data)} className="text-orange-500 bg-slate-100">
+        <Button disabled={isAdmin} onClick={() => addToCartHandler(data)} className="text-orange-500 bg-slate-100">
           add to cart
         </Button>
       </div>

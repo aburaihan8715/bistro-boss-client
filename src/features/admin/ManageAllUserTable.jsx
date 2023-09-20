@@ -4,8 +4,10 @@ import SectionHeading from "../../ui/SectionHeading";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import LoadingSpinner from "../../ui/LoadingSpinner";
 import ErrorMessage from "../../ui/ErrorMessage";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const ManageAllUserTable = () => {
+  const { axiosSecure } = useAxiosSecure();
   const {
     data: users = [],
     error: userError,
@@ -14,10 +16,13 @@ const ManageAllUserTable = () => {
   } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
-      const data = await fetch(`http://localhost:5000/users`);
-      return data.json();
+      const data = await axiosSecure.get(`http://localhost:5000/users`);
+      return data.data;
     },
   });
+  if (userLoading) return <LoadingSpinner />;
+  if (userError) return <ErrorMessage>{userError.message}</ErrorMessage>;
+  console.log(users);
 
   const deleteHandler = async (user) => {
     try {
@@ -66,7 +71,7 @@ const ManageAllUserTable = () => {
   };
 
   if (userLoading) return <LoadingSpinner />;
-  if (userError) return <ErrorMessage />;
+  if (userError) return <ErrorMessage>{userError}</ErrorMessage>;
 
   return (
     <div className="">
