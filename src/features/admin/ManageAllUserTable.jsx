@@ -1,12 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
-import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import SectionHeading from "../../ui/SectionHeading";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
-import SectionHeading from "../ui/SectionHeading";
-// import SectionHeading from "../../../components/SectionHeading/SectionHeading";
+import LoadingSpinner from "../../ui/LoadingSpinner";
+import ErrorMessage from "../../ui/ErrorMessage";
 
-const PageAllUser = () => {
-  const { data: users = [], refetch } = useQuery({
+const ManageAllUserTable = () => {
+  const {
+    data: users = [],
+    error: userError,
+    isLoading: userLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["users"],
     queryFn: async () => {
       const data = await fetch(`http://localhost:5000/users`);
@@ -14,61 +19,57 @@ const PageAllUser = () => {
     },
   });
 
-  const deleteHandler = (user) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
+  const deleteHandler = async (user) => {
+    try {
+      const result = await Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      });
+
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/users/${user._id}`, {
+        const res = await fetch(`http://localhost:5000/users/${user._id}`, {
           method: "DELETE",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            refetch();
-            if (data.deletedCount > 0) {
-              Swal.fire("Deleted!", "Your file has been deleted.", "success");
-            }
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
+        });
+        const data = res.json();
+        if (data.deletedCount > 0) {
+          Swal.fire("Deleted!", "Your file has been deleted.", "success");
+        }
+        refetch();
       }
-    });
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
-  const makeAdminHandler = (user) => {
-    fetch(`http://localhost:5000/users/admin/${user?._id}`, {
-      method: "PATCH",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.modifiedCount) {
-          refetch();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: `${user.name} is admin now!`,
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      })
-      .catch((error) => {
-        console.log(error.message);
+  const makeAdminHandler = async (user) => {
+    try {
+      const res = await fetch(`http://localhost:5000/users/admin/${user?._id}`, {
+        method: "PATCH",
       });
+      const data = await res.json();
+      if (data.modifiedCount) {
+        Swal.fire({
+          position: "center",
+          title: `${user.name} is admin now!`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        refetch();
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
+
+  if (userLoading) return <LoadingSpinner />;
+  if (userError) return <ErrorMessage />;
 
   return (
     <div className="">
-      <Helmet>
-        <title>Bistro | All user</title>
-      </Helmet>
       <div>
         <SectionHeading subHeading={`How many??`} heading={`MANAGE ALL USERS`}></SectionHeading>
 
@@ -123,4 +124,4 @@ const PageAllUser = () => {
   );
 };
 
-export default PageAllUser;
+export default ManageAllUserTable;

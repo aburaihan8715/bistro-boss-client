@@ -14,11 +14,11 @@ import PageMyBookings from "../pages/PageMyBookings";
 import PageAddReview from "../pages/PageAddReview";
 import PageAdminHome from "../pages/PageAdminHome";
 import PageManageBookings from "../pages/PageManageBookings";
-import PageAllUser from "../pages/PageAllUser";
 import PageManageItems from "../pages/PageManageItems";
 import PageAddItems from "../pages/PageAddItems";
 import PagePaymentHistory from "../pages/PagePaymentHistory";
 import PageReservation from "../pages/PageReservation";
+import PageManageAllUser from "../pages/PageManageAllUser";
 
 const router = createBrowserRouter([
   // main layout routes
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
       },
       {
         path: "dashboard/allUser",
-        element: <PageAllUser></PageAllUser>,
+        element: <PageManageAllUser />,
       },
       {
         path: "dashboard/manageItems",

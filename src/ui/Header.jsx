@@ -1,15 +1,17 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
 import { FaShoppingCart } from "react-icons/fa";
 import useFetchCartData from "../hooks/useFetchCartData";
 
 const Header = () => {
-  const { user, logOutUser } = useAuth();
+  const { user, logOutUser, authLoading } = useAuth();
   const { carts } = useFetchCartData();
+  const navigate = useNavigate();
 
   const logOutHandler = async () => {
     try {
       await logOutUser();
+      navigate("/login");
     } catch (error) {
       console.log(error.message);
     }
@@ -73,12 +75,12 @@ const Header = () => {
 
         <div className="navbar-end space-x-2">
           {!user && (
-            <Link to="/login" className="btn btn-md">
-              Login
+            <Link to="/login" className="">
+              <button className="btn btn-md">login</button>
             </Link>
           )}
           {user && (
-            <button className="btn" onClick={logOutHandler}>
+            <button disabled={authLoading} className="btn" onClick={logOutHandler}>
               Logout
             </button>
           )}

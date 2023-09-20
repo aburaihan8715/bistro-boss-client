@@ -7,14 +7,6 @@ import RecommendFood from "../features/menu/RecommendFood";
 import FeaturedItem from "../features/menu/FeaturedItem";
 import Testimonials from "../features/testimonials/Testimonials";
 
-// import Banner from "../ui/Banner";
-// import FoodCategorySlider from "../features/menu/FoodCategorySlider";
-// import FromMenu from "../features/menu/FromMenu";
-// import CallUs from "../ui/CallUs";
-// import RecommendFood from "../features/menu/RecommendFood";
-// import FeaturedItem from "../features/menu/FeaturedItem";
-// import Testimonials from "../../features/testimonials/Testimonials";
-
 const PageHome = () => {
   return (
     <div>

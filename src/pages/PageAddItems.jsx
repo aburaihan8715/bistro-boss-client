@@ -1,9 +1,7 @@
+import AddItemForm from "../features/admin/AddItemForm";
+
 const PageAddItems = () => {
-  return (
-    <div>
-      <div>page add items</div>
-    </div>
-  );
+  return <AddItemForm />;
 };
 
 export default PageAddItems;

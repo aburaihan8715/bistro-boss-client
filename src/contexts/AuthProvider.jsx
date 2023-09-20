@@ -68,7 +68,7 @@ const AuthProvider = ({ children }) => {
           setAuthLoading(false);
         });
       } else {
-        setUser(currentUser);
+        setUser(null);
         setAuthLoading(false);
         localStorage.removeItem("access-token");
       }
@@ -84,6 +84,7 @@ const AuthProvider = ({ children }) => {
     user,
     authLoading,
     setAuthLoading,
+    setUser,
     logOutUser,
     updateUserProfile,
     authenticationUsingGoogle,

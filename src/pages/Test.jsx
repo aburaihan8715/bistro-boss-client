@@ -1,5 +1,5 @@
 // import Swal from "sweetalert2";
-const Secret = () => {
+const Test = () => {
   // const sweetAlertHandler = () => {
   //   Swal.fire({
   //     title: "Error!",
@@ -9,7 +9,7 @@ const Secret = () => {
   //   });
   // };
   return (
-    <h2>secret page</h2>
+    <h2>Test page</h2>
     // <div className="pt-28">
     //   <div className="bg-orange-400 p-8">
     //     <div>secret page...........</div>
@@ -66,4 +66,4 @@ const Secret = () => {
   );
 };
 
-export default Secret;
+export default Test;

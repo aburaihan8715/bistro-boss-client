@@ -1,9 +1,7 @@
+import AddReviewForm from "../features/user/AddReviewForm";
+
 const PageAddReview = () => {
-  return (
-    <div>
-      <div>page add review</div>
-    </div>
-  );
+  return <AddReviewForm />;
 };
 
 export default PageAddReview;

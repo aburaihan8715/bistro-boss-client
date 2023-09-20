@@ -1,7 +1,3 @@
-// import CommonBanner from "../../components/CommonBanner";
-// import Location from "../features/contact/Location";
-// import ContactForm from "../features/contact/ContactForm";
-// import contactUsBannerImg from "../../assets/images/contact/banner.jpg";
 import contactUsBannerImg from "../assets/images/contact/banner.jpg";
 import ContactForm from "../features/contact/ContactForm";
 import Location from "../features/contact/Location";
